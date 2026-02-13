@@ -8,7 +8,7 @@ steps:
       - 'deploy'
       - 'asteroids-extractor'
       - '--gen2'
-      - '--region=eu-west1'
+      - '--region=europe-west1'
       - '--source=.'
       - '--runtime=python312'
       - '--entry-point=main'
