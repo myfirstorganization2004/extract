@@ -1,16 +1,19 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from extractor.asteroids_extractor import AsteroidsExtractor
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main(request):
 
+    request_json = request.get_json(silent=True)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    start_date = request_json.get("start_date")
+    end_date = request_json.get("end_date")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    if not start_date or not end_date:
+        return {"error": "start_date and end_date are required"}, 400
+
+    extractor = AsteroidsExtractor(start_date, end_date)
+    try:
+        data = extractor.get_asteroids_data()
+        return data
+    except Exception as e:
+        return {"error": str(e)}, 500
