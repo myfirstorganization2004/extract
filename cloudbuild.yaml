@@ -15,4 +15,4 @@ steps:
       - '--entry-point=main'
       - '--trigger-http'
       - '--allow-unauthenticated'
-      - '--set-env-vars=NASA_BASE_URL=https://api.nasa.gov/planetary/apod, NASA_API_KEY=KTgvkik8C778RRO4sxdwxdorP2GvgVV8eBPcpyPm'
+      - '--set-env-vars=NASA_BASE_URL=https://api.nasa.gov/planetary/apod,NASA_API_KEY=KTgvkik8C778RRO4sxdwxdorP2GvgVV8eBPcpyPm'
