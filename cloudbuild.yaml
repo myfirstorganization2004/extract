@@ -1,13 +1,14 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
-      [
-        'run', 'deploy', 'asteroids-extractor',
-        '--source', '.',
-        '--region', 'us-central1',
-        '--allow-unauthenticated',
-        '--gen2',
-        '--runtime', 'python312',
-        '--entry-point', 'main'
-      ]
-timeout: '900s'
+      - 'gcloud'
+      - 'functions'
+      - 'deploy'
+      - 'asteroids-extractor'
+      - '--gen2'
+      - '--region=eu-west1'
+      - '--source=.'
+      - '--runtime=python312'
+      - '--entry-point=main'
+      - '--trigger-http'
+      - '--allow-unauthenticated'
